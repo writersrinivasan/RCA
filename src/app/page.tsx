@@ -148,8 +148,7 @@ export default function Home() {
                 For support team leads, supervisors, and managers who oversee technical support
                 or service desk teams — no coding, log analysis, or prompt-writing background required.
                 Delivered live and virtual to 700+ participants at once, with roughly 70% of every
-                session spent doing, not listening: breakout rooms, live polls, and hands-on practice
-                inside this app on your own device.
+                session spent watching real AI prompts run live and unscripted, not listening to slides.
               </p>
             </FadeIn>
             <FadeIn delay={0.24}>
@@ -203,10 +202,10 @@ export default function Home() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Format</p>
               <p className="mt-2 text-sm leading-relaxed text-slate-300">
-                Live and virtual, delivered to 700+ participants across breakout rooms. Roughly 70% of
-                every module is hands-on — polls, paired role-play, and practice inside this app — with
-                short framing talks covering the rest. No hands-on coding or log-analysis labs; AI tools
-                and observability queries are covered at a recognize-and-direct level.
+                Live and virtual to 700+ participants at once. Roughly 70% of every module is a live,
+                unscripted AI prompt run on screen and explained in real time — with short framing talks
+                covering the rest. No breakout rooms, no crowd Q&amp;A, no hands-on coding or log-analysis
+                labs; AI tools and observability queries are covered at a recognize-and-direct level.
               </p>
             </div>
             <div>

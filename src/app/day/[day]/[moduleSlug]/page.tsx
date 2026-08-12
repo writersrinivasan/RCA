@@ -7,10 +7,11 @@ import {
   Layers,
   ListChecks,
   TriangleAlert,
-  Sparkles,
   Quote,
   CircleCheckBig,
-  Users2,
+  MonitorPlay,
+  Terminal,
+  Vote,
   Wifi,
   Timer,
 } from "lucide-react";
@@ -18,6 +19,7 @@ import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import { Pill } from "@/components/Pill";
 import { TimeSplitBar } from "@/components/TimeSplitBar";
+import { CopyButton } from "@/components/CopyButton";
 import { modules, getModule, getAdjacentModules } from "@/lib/content/curriculum";
 import { getDay } from "@/lib/content/days";
 
@@ -130,14 +132,11 @@ export default async function ModulePage({
             <div className="rounded-2xl border border-sky-400/20 bg-sky-400/[0.04] p-6 sm:p-7">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-400/15 text-sky-300">
-                  <Sparkles className="h-4 w-4" />
+                  <MonitorPlay className="h-4 w-4" />
                 </span>
-                <p className="text-xs font-semibold uppercase tracking-wider text-sky-300">Hands-on activity</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-sky-300">Live facilitator demo</p>
                 <span className="ml-auto flex flex-wrap items-center gap-2">
                   <Pill tone="amber" icon={<Clock3 className="h-3 w-3" />}>{mod.activity.duration}</Pill>
-                  {mod.activity.groupSize && (
-                    <Pill tone="slate" icon={<Users2 className="h-3 w-3" />}>{mod.activity.groupSize}</Pill>
-                  )}
                 </span>
               </div>
               <h3 className="mt-4 font-display text-lg font-semibold text-white">{mod.activity.title}</h3>
@@ -152,10 +151,33 @@ export default async function ModulePage({
                   </li>
                 ))}
               </ol>
-              <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-white/10 bg-black/20 p-4">
+
+              <div className="mt-5 rounded-xl border border-white/10 bg-black/25 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <Terminal className="h-3.5 w-3.5" /> Paste into Claude, live
+                  </p>
+                  <CopyButton text={mod.activity.facilitatorPrompt} />
+                </div>
+                <pre className="mt-3 whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-slate-300">
+{mod.activity.facilitatorPrompt}
+                </pre>
+              </div>
+
+              {mod.activity.engagement && (
+                <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-emerald-400/15 bg-emerald-400/[0.04] p-4">
+                  <Vote className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+                  <p className="text-xs leading-relaxed text-emerald-100/80">
+                    <span className="font-semibold text-emerald-300">Optional pulse-check: </span>
+                    {mod.activity.engagement}
+                  </p>
+                </div>
+              )}
+
+              <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-white/10 bg-black/20 p-4">
                 <Wifi className="mt-0.5 h-4 w-4 shrink-0 text-slate-500" />
                 <p className="text-xs leading-relaxed text-slate-400">
-                  <span className="font-semibold text-slate-300">Running this virtually: </span>
+                  <span className="font-semibold text-slate-300">Why this scales: </span>
                   {mod.activity.virtualNotes}
                 </p>
               </div>

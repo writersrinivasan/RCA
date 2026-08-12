@@ -48,20 +48,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Field-Guide Match + Trust-Story Exchange",
-      format: "individual-then-breakout",
+      title: "Live Demo: Watch AI Fill a Gap With Confidence",
+      format: "facilitator-demo",
       duration: "35 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Has this happened on your team? Yes / No\" — glance at the result, no discussion needed.",
       description:
-        "A fast individual warm-up followed by a structured breakout exchange, so every single participant contributes a real example instead of a handful of people doing all the talking.",
+        "You run this live, unscripted, in front of the whole room. Pose the question yourself, paste the prompt into Claude on screen, and narrate what comes back — the room watches the confident-wrong-answer problem happen in real time instead of hearing about it.",
       steps: [
-        "(5 min, individual) Privately guess, in the chat or a shared worksheet, which AI tool — Claude, ChatGPT, Copilot, or Cursor — fits each of 4 quick scenarios posted on screen.",
-        "(5 min, live poll) Vote on the one scenario the room disagreed on most — the split itself becomes the teaching moment.",
-        "(20 min, breakout rooms of 6–7) Each person shares one real moment their team trusted an AI-generated answer that turned out right or wrong, and names what leadership check was present or missing. The room appoints a scribe and picks its single best example.",
-        "(5 min, main room) Three randomly-called rooms unmute and share their example in 60 seconds each via chat or voice; the facilitator ties each one back to the 'confident wrong answer' problem.",
+        "Pose the question to the room, rhetorically: \"What happens when I give an AI assistant only half the story?\" You're not waiting for answers — say it, then go straight to the demo.",
+        "Open Claude on screen and paste the prompt below live, unedited, so the room sees a real, unrehearsed response — not a slide you prepared earlier.",
+        "Read the response aloud. Pause on the specific technical claim it makes and ask the room, rhetorically: \"Where did that come from? We never gave it that.\"",
+        "Answer your own question: name the one follow-up question a leader should ask before this goes in an incident channel, and tie it directly back to the 'confident wrong answer' problem.",
+        "Run the optional poll below as a 10-second pulse-check, then move on — don't wait for or read out individual answers.",
       ],
+      facilitatorPrompt:
+        "Here's what I know so far: our email notification service stopped sending password-reset emails starting around 3 PM yesterday. That's the whole report — no logs yet. What's the likely root cause, and how confident are you?",
       virtualNotes:
-        "Auto-assign breakout rooms sized 6–7 (roughly 100–115 rooms for 700 people). Post the 4-scenario quiz and the discussion prompt in the chat or a pinned doc so every room has it without needing a shared screen. Use your platform's broadcast/timer feature to move all rooms together.",
+        "This format works at any audience size because nobody needs to respond for it to land — it's a worked example, the same way a keynote demo works for 10 people or 10,000. No breakout rooms, no chat-reading required. Just run the prompt for real and react to it honestly.",
     },
     misconceptions: [
       {
@@ -130,20 +133,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Vote, Then Reveal: Checkout Failure Case Study",
-      format: "individual-then-breakout",
+      title: "Live Demo: Watch the Stress-Test Catch the Hallucination",
+      format: "facilitator-demo",
       duration: "28 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Would you have signed off on this before seeing the check? Yes / No.\"",
       description:
-        "Everyone reads the same two AI write-ups and commits to a sign-off decision individually before any discussion — the vote-first structure is what makes the reveal land.",
+        "Show the room the Checkout Failure case on screen, then run the actual Evidence Validation prompt from the Prompt Library live — the room watches Claude itself surface the contradiction, in real time, with no rehearsal.",
       steps: [
-        "(5 min, individual, in-app) Open the Checkout Failure case study on your own device and read both write-ups without revealing the answer.",
-        "(3 min, live poll) Vote A or B: which write-up would you personally sign off on for the customer-facing postmortem?",
-        "(12 min, breakout rooms of 6–7) Apply the three questions — what evidence, what else was ruled out, what would prove it wrong — to both write-ups as a group, then click Reveal together in-app.",
-        "(8 min, main room) The facilitator polls again post-reveal to show how the vote shifted, then opens the chat for one 'what surprised you' response per room.",
+        "Open the Checkout Failure case study on screen and read Write-up B's claim aloud: \"the payment gateway's SSL certificate expired at 2:14 AM...\" Ask the room, rhetorically: \"Would you sign off on this?\"",
+        "Open Claude and paste the prompt below live — it's the same Stress-Test Hypothesis template from this course's Prompt Library, just filled in with this case's real evidence.",
+        "Read the output aloud as it comes back. It will surface that the certificate has 8 months of validity left — pause there and let that land.",
+        "Connect it back for the room: the lesson isn't 'don't trust AI' — it's that the right prompt, aimed at the right evidence, catches a wrong AI claim just as fast as it can produce one. That's evidence-anchoring, demonstrated, not just described.",
+        "Run the optional poll, glance at the split, move on.",
       ],
+      facilitatorPrompt:
+        "Here is a proposed root cause: \"The payment gateway's SSL certificate expired at 2:14 AM, causing all HTTPS handshakes to the payment processor to fail.\" Here is the available evidence: checkout success rate dropped from 98% to 41% at 02:11 AM and recovered to 96% by 03:05 AM; config change #5521 (\"increase payment timeout threshold\") deployed at 02:09 AM; gateway logs show a spike in \"upstream timeout\" errors — not SSL errors — starting 02:12 AM; the SSL certificate's expiry is confirmed 8 months out via the certificate manager dashboard; rolling back config #5521 at 02:58 AM correlated with recovery within 7 minutes. Do three things: 1) List every piece of evidence that supports the proposed cause. 2) List any evidence that contradicts it. 3) Describe one test that would disprove it if it's wrong.",
       virtualNotes:
-        "This is the app's built-in Case Study Reveal component — every participant runs it themselves on their own device, so it scales to any number of attendees with zero facilitator bottleneck. Share the direct link in the chat: /case-studies/checkout-failure.",
+        "This works as a single shared screen for any size audience — nobody needs their own device or a breakout room for the demonstration to land. If you want participants to try the prompt themselves afterward, point them to this exact template in the Prompt Library's Evidence Validation category.",
     },
     misconceptions: [
       {
@@ -202,19 +208,22 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Spot the Wrong Time Window: API Latency Case",
-      format: "individual-then-breakout",
+      title: "Live Demo: Catch the Wrong Time Window",
+      format: "facilitator-demo",
       duration: "17 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Would 'no anomalies found' have reassured you? Yes / No.\"",
       description:
-        "A short, sharp version of the same vote-then-reveal structure, focused entirely on the one skill this module teaches: catching a query that looked in the wrong place.",
+        "A short, sharp version of the same live-demo structure — one prompt, run once, focused entirely on the single skill this module teaches.",
       steps: [
-        "(4 min, individual, in-app) Open the API Latency Spike case study and read the raw signals and both write-ups.",
-        "(8 min, breakout rooms of 6–7) Agree as a group on the one follow-up question that would have caught the wrong time window, then reveal together and compare.",
-        "(5 min, main room) Chat prompt: paste your group's one-sentence follow-up question — the facilitator reads a few aloud and highlights the closest matches to 'what time window did this actually cover?'",
+        "Set up the scene in one line: an engineer just told you \"the query found nothing, so it's not on our side.\" Ask the room, rhetorically: \"Do you believe that yet?\"",
+        "Paste the prompt below into Claude live — it asks for a plain-language scope explanation of the query that was run.",
+        "Read the response aloud. It will state the query's actual time window, which won't match the incident window you give it — pause on the mismatch.",
+        "Answer your own question: the follow-up that catches this every time is \"what time window did that query actually cover, and does it match when the customer says the issue started?\"",
       ],
+      facilitatorPrompt:
+        "Here is a query that was run: a search for API errors and anomalies over 'the last 60 minutes,' starting at 11:40 AM. Here is the incident window we actually care about: 09:15 AM to 10:45 AM, on our API gateway. Explain, in plain language a non-technical reader can follow, exactly what time window the query covered — then state clearly: does that match the incident window above, or is there a mismatch?",
       virtualNotes:
-        "Same in-app mechanic as Module 2, different case: /case-studies/api-latency-spike. Because this module is short, reuse Module 2's breakout rooms rather than re-forming them — every minute of transition time matters at 700-person scale.",
+        "Same shared-screen demo format as Module 2 — no separate setup needed, and no breakout rooms to re-form. Run it back to back with Module 2 to save transition time.",
     },
     misconceptions: [
       {
@@ -275,20 +284,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Role-Play in Pairs: The Live-Incident Pressure Test",
-      format: "breakout",
+      title: "Live Demo: Spar With the Pressured Engineer",
+      format: "facilitator-demo",
       duration: "32 min",
-      groupSize: "Breakout rooms of 2–3 (paired role-play)",
+      engagement: "Optional one-click poll: \"Did that question feel like it would speed things up or slow them down? Fast / Slow.\"",
       description:
-        "Real-time pressure only shows up in a real conversation — this runs as paired role-play in small breakout rooms so everyone practices the actual words, not just discusses the theory.",
+        "You play the leader, live and unscripted. Claude plays the pressured engineer proposing a hypothesis — you respond in real time with the validating question, so the room watches the actual conversation instead of discussing it in the abstract.",
       steps: [
-        "(2 min, main room) The facilitator sets the scene: an engineer is about to post an AI-generated root cause into the incident channel with an executive watching, 20 minutes before a customer call.",
-        "(10 min, breakout pairs/triads) One person plays the engineer proposing the hypothesis under time pressure; the other plays the leader, practicing a validating question that doesn't stall the room. Swap roles halfway through.",
-        "(10 min, same rooms, round 2) Run a second, harder scenario — the posted instructions escalate the pressure: a second engineer disagrees, and the customer is already on the line.",
-        "(10 min, main room) Poll: 'Did the validating question slow the room down, speed it up, or make no difference?' Then 2–3 pairs share the exact phrase they used, via chat.",
+        "Set the scene for the room: an engineer is about to post an AI-generated root cause into the incident channel, an executive is watching, and there's a customer call in 20 minutes.",
+        "Paste the prompt below into Claude live and let it write the engineer's message — realistic, a little rushed, exactly the kind of message that shows up under pressure.",
+        "Read the message aloud, then respond out loud exactly as you would in the room: the one validating question that doesn't stall momentum. Do this live, don't pre-write it.",
+        "Ask Claude a follow-up in the same thread — \"what would the engineer say back if a leader asked that?\" — read the reply, and critique it with the room: did it actually answer the question, or dodge it?",
+        "Run the optional poll, glance at the result, move on.",
       ],
+      facilitatorPrompt:
+        "Role-play as a support engineer under pressure. It's 20 minutes before a customer call, an executive is watching the incident channel, and an AI assistant just gave you a plausible-sounding root cause for the outage. Write the single message you'd post in the incident channel proposing it as the cause, in a realistic, slightly rushed tone — the way someone actually types under deadline pressure, not a polished report.",
       virtualNotes:
-        "Pair or triad rooms (2–3 people, roughly 230–350 rooms for 700 attendees) work better than large groups for role-play — nobody can hide, and it mirrors the real 1:1 pressure of an incident channel. Post both scenario prompts in the chat before opening rooms so nobody is waiting on a shared screen.",
+        "This is genuinely more consistent at scale than 350 pairs improvising role-play simultaneously — everyone sees the same real exchange and can judge the validating question for themselves. No breakout rooms, no pairing logistics, no risk of a room going quiet with nobody willing to go first.",
     },
     misconceptions: [
       {
@@ -357,20 +369,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Map Your Own Incident onto a Framework",
-      format: "breakout",
+      title: "Live Demo: Draft a Fishbone From Real Notes",
+      format: "facilitator-demo",
       duration: "32 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Which framework would you have reached for first? 5 Whys / Fishbone.\"",
       description:
-        "Groups pick a framework live in the app and place a real, recurring incident from their own environment onto it, using the in-app Frameworks tool as the shared reference every room works from independently.",
+        "Pose the framework-choice question yourself, then run the actual Framework Application prompt live against a real recurring incident — the room watches a Fishbone diagram get built in real time from messy notes.",
       steps: [
-        "(3 min, individual) Think of one real, recurring incident type from your own team's history — you'll need it in the next step.",
-        "(5 min, individual, in-app) Open Frameworks and skim all four tabs to refresh which one fits fast chains, broad causes, combinations, or unclear scope.",
-        "(15 min, breakout rooms of 6–7) Each person names their incident type; the group picks the framework that best fits each one and marks, step by step, where AI would assist and where a human sign-off is required.",
-        "(9 min, main room) Poll: which framework did most rooms reach for most often? The facilitator shows the live result and asks one room with an unusual pick to explain their reasoning via chat.",
+        "Ask the room, rhetorically: \"This incident kept happening — three times, three different 'root causes.' What's wrong with how it was investigated?\" Don't wait for an answer; go straight to the demo.",
+        "Open Frameworks on screen and skim all four tabs for 60 seconds so the room has the mental model fresh before the demo.",
+        "Paste the prompt below into Claude live — it's the Framework Application template from the Prompt Library, filled in with a real recurring incident's notes.",
+        "Read the four categories back as they populate. Point out anything that comes back empty — that's the model correctly declining to force an entry, not a gap in the demo.",
+        "Answer your own opening question: this is exactly what three separate 5 Whys sessions missed, and exactly what a Fishbone pass catches by comparing categories instead of chasing one chain at a time.",
       ],
+      facilitatorPrompt:
+        "Here are raw notes from an incident: a support-ticket sync queue backed up after a scheduled maintenance window, and the manual re-sync trigger was skipped. This is the third time this has happened in two months — once after a deploy, once after a database failover, always with the same missed manual step, and the pipeline itself never actually errors. Sort every potential contributing factor into four categories: People, Process, Technology, Environment. Only include factors that have real support in the notes above — if a category has nothing to support it, say so instead of forcing an entry.",
       virtualNotes:
-        "Keep the same 6–7 person rooms as earlier in the day if your platform allows it — less re-shuffling overhead at 700-person scale. The app's Frameworks page (/frameworks) is the shared reference every room works from independently; no shared screen needed.",
+        "One shared screen, no breakout rooms, no per-table framework selection to coordinate — every attendee sees the same worked example and can apply it to their own incident afterward using the Frameworks and Prompt Library pages on their own time.",
     },
     misconceptions: [
       {
@@ -434,19 +449,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Facilitate the CRM Sync Lag Retrospective",
-      format: "breakout",
+      title: "Live Demo: Build the Timeline Before the Hypothesis",
+      format: "facilitator-demo",
       duration: "21 min",
-      groupSize: "Breakout rooms of 6–7, one facilitator-in-training per room",
+      engagement: "Optional one-click poll: \"Would you have opened with the AI hypothesis or the timeline? Hypothesis / Timeline.\"",
       description:
-        "One person per room practices opening a retrospective with evidence before hypothesis, using the CRM Sync Lag case as the shared incident packet — everyone in the room has the same evidence in front of them via the app.",
+        "Model the opening minute of a retrospective live: run the Timeline Reconstruction prompt on real evidence before anyone in the room sees the AI-generated hypothesis, so the ordering itself becomes the demonstration.",
       steps: [
-        "(2 min, main room) Rooms pick one person to facilitate; everyone opens the CRM Sync Lag case study on their own device.",
-        "(12 min, breakout rooms of 6–7) The facilitator opens with the raw signals — not the write-ups — and only introduces the AI-generated hypothesis after the group has formed its own read of the evidence. The room decides together whether to confirm or reject it.",
-        "(7 min, same rooms) Quick peer feedback round: each person tells the facilitator-in-training one thing that kept the room anchored on evidence, and one moment it almost anchored on the hypothesis instead.",
+        "Tell the room the setup: the CRM Sync Lag incident, and an AI-generated hypothesis that's already sitting in the incident channel — but you're not opening with it.",
+        "Paste the prompt below into Claude live and let it build the timeline from the raw signals alone, no hypothesis included yet.",
+        "Read the timeline aloud and ask the room, rhetorically: \"Based on just this, what do you think the pattern is?\" Give it three seconds, then answer it yourself.",
+        "Now reveal the AI-generated hypothesis on screen for the first time, and check it against the timeline you just built together — confirm or reject it live, out loud.",
+        "Run the optional poll to show how many people's instinct matched yours before the reveal.",
       ],
+      facilitatorPrompt:
+        "Build a chronological timeline from these incident notes, evidence only, no conclusions: sync queue backed up after a scheduled maintenance window 6 weeks ago; sync queue backed up after a deploy 3 weeks ago; sync queue backed up after a database failover this week; in all three cases the sync pipeline itself never logged an error, it silently paused waiting for a manual re-sync trigger; that manual trigger step is documented only on a wiki page linked from an archived onboarding doc. Sort strictly by time and flag anything that repeats across all three incidents.",
       virtualNotes:
-        "This works as well as — or better than — in person: everyone has independent access to the same case study page, so there's no 'who can see the packet' bottleneck a physical handout would create at 700-person scale.",
+        "Running this as one live demo, in front of everyone, is actually closer to the real skill than 100 separate rooms each electing an inexperienced facilitator — the room watches an evidence-first opening modeled correctly once, cleanly, before they ever try it themselves back at their own desk.",
     },
     misconceptions: [
       {
@@ -507,19 +526,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Edit Before You Send: Two Live Drafts",
-      format: "individual-then-breakout",
+      title: "Live Demo: Catch the Overpromise Before It Sends",
+      format: "facilitator-demo",
       duration: "21 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Would you have sent that draft as-is? Yes / No.\"",
       description:
-        "Everyone runs a real Prompt Library template in their own AI chat and edits the output against the three-check pass — the most literally hands-on moment in the whole course.",
+        "Run the actual Customer-Facing Update prompt live, then read the draft it produces with the three-check pass out loud — the room watches the exact edit a leader should make, on a real draft, not a cleaned-up example.",
       steps: [
-        "(6 min, individual, in-app + your own AI tool) Open Prompt Library, copy the Executive Summary or Customer-Facing Update prompt, and run it in whatever AI assistant you already use.",
-        "(10 min, breakout rooms of 6–7) Compare drafts across the room — everyone's AI output will differ slightly. Run the three-check pass (accuracy, hedging, audience fit) on two or three of them together and mark what needs editing.",
-        "(5 min, main room) Chat prompt: paste the single word or phrase your group flagged as most likely to overpromise — the facilitator scans for patterns live.",
+        "Tell the room what's about to happen: a real AI-drafted customer update, generated live, that you're going to try to break using the three checks — accuracy, hedging, audience fit.",
+        "Paste the prompt below into Claude on screen and let it produce the draft, unedited.",
+        "Read the draft aloud, then run the three checks against it one at a time, out loud, marking any line that overpromises or names a cause too early.",
+        "Read the model's own self-flagged \"sentences I was unsure about\" list — compare it against what you just caught. Where do they agree, and where did you catch something it didn't flag itself?",
+        "Run the optional poll, glance at the split, move on.",
       ],
+      facilitatorPrompt:
+        "Draft a customer-facing status update based on this internal summary: checkout failures affected roughly 60% of transactions for about an hour; the team believes a recent configuration change caused it and has since rolled that change back; success rates have returned to normal but full confirmation is still in progress. Requirements: state the customer-visible impact clearly and first. Do not name an internal root cause unless it has been fully confirmed — use 'we are investigating' language if it hasn't. Do not use language that could be read as admitting fault or liability unless that has been explicitly approved. Keep it under 100 words. After the draft, list separately any sentence you were unsure about from a liability or overpromising standpoint.",
       virtualNotes:
-        "This is the one activity every participant should do on their own device with their own AI account, not shared — it only works if 700 people are each generating a real draft. Post the direct link (/prompt-library) in the chat at the top of the block.",
+        "One shared screen carries this entire exercise — every attendee can go run the same template themselves afterward with their own incident details, using the direct link to this prompt in the Prompt Library.",
     },
     misconceptions: [
       {
@@ -594,20 +617,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Run the Checklist Against the Planted Flaw",
-      format: "individual-then-breakout",
+      title: "Live Demo: Let AI Flag What Needs Redacting",
+      format: "facilitator-demo",
       duration: "32 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Would you have spotted all of these yourself? Yes / No.\"",
       description:
-        "Groups debrief Day 2's retrospective simulation item by item against the live Checklist tool, deciding together where each check would have caught the planted flaw.",
+        "Run the actual Data Sanitization prompt live against a planted, realistic log snippet, then walk the Checklist against Day 2's retrospective on screen — two short demos back to back, both narrated, neither requiring the room to do anything but watch and answer a single poll.",
       steps: [
-        "(4 min, individual, in-app) Open Checklist on your own device — you'll check items live as a group in the next step.",
-        "(16 min, breakout rooms of 6–7) Walk the Trust-Calibration and Data-Handling checklists together against the CRM Sync Lag scenario from Module 5: for each item, decide as a group whether it would have caught the flaw, and who should have caught it. Check items off together, live.",
-        "(7 min, same rooms) Separately, list anything in that case's raw signals that would have needed sanitizing before reaching an AI tool, and check it against your own organization's approved-tool policy if you know it.",
-        "(5 min, main room) Poll: 'Which checklist item would have caught this fastest?' — three options pulled from the app's checklist items.",
+        "Tell the room: \"I'm going to paste a realistic log snippet and have Claude find everything in it that shouldn't be there.\" Read the snippet aloud first so they can try to spot it themselves, silently.",
+        "Paste the prompt below into Claude live and let it flag every PII/credential/token item it finds.",
+        "Read the flagged list aloud and compare it against what you personally caught reading it cold — be honest if it caught something you missed.",
+        "Switch to the Checklist page on screen and walk the Trust-Calibration items against Day 2's CRM Sync Lag retrospective, checking off live which ones would have caught the planted flaw and narrating your reasoning for each.",
+        "Run the optional poll, glance at the split, move on.",
       ],
+      facilitatorPrompt:
+        "Review this text and list every piece of information that looks like it could be PII, a credential, or a token — names, emails, account IDs, session tokens, API keys, IP addresses, phone numbers, or anything else that could identify a specific person or grant access to a system: \"Customer jane.doe@example.com (acct #88213) reported the issue at 09:41. Pulled logs from host prod-api-07, session token eyJhbGciOiJIUzI1NiJ9.mock, source IP 203.0.113.44. Escalated to on-call via internal Slack, cc'd manager rgupta@example.com.\" For each item found, quote the exact snippet and say what category it falls into.",
       virtualNotes:
-        "Each participant's checklist state saves only in their own browser (via localStorage) — that's a feature at this scale, not a limitation: 700 people can each keep their own running checklist across all three days without anyone's progress interfering with anyone else's.",
+        "Both halves of this demo run from one shared screen — the Checklist's per-browser saved state (via localStorage) means you can safely reset it before the session without affecting anything else, and nobody in the audience needs their own copy open for the demo to work.",
     },
     misconceptions: [
       {
@@ -682,19 +708,23 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Draft Your Team's First Playbook Entry",
-      format: "individual-then-breakout",
+      title: "Live Demo: Draft a Playbook Entry From Scratch",
+      format: "facilitator-demo",
       duration: "21 min",
-      groupSize: "Breakout rooms of 6–7",
+      engagement: "Optional one-click poll: \"Do you have anything like this documented today? Yes / No.\"",
       description:
-        "Individual drafting time, with a breakout room for peer feedback — everyone leaves with a real artifact, not a template they'll fill in later.",
+        "Draft a real three-line playbook entry live, for a made-up but realistic incident type, so the room sees exactly how little effort this takes — then point everyone to the exact templates they'll adapt on their own afterward.",
       steps: [
-        "(8 min, individual, in-app) Open Prompt Library, pick one recurring incident type from your own team, and draft the three-line playbook entry (when AI is used, what sign-off is required, how it's documented) in a doc or the chat.",
-        "(8 min, breakout rooms of 6–7) Read your playbook entry aloud to the room; get one piece of feedback from a neighbor on whether the sign-off trigger is specific enough to actually be followed.",
-        "(5 min, individual, in-app) Select two prompt templates from the library to pilot with your own team this week — note them down.",
+        "Tell the room the target: a three-line playbook entry — when AI is used, what sign-off is required, how it's documented — for one recurring incident type. Pick one out loud (e.g., \"password reset failures\").",
+        "Paste the prompt below into Claude live and let it draft the AI-involvement documentation line as a starting point.",
+        "Read it aloud, then write the other two lines yourself, live, thinking out loud about what sign-off trigger would actually get followed rather than ignored.",
+        "Open Prompt Library on screen and point to the two categories most relevant to the incident type you picked — tell the room these are the ones to start with for their own team.",
+        "Run the optional poll, glance at the split, close the module.",
       ],
+      facilitatorPrompt:
+        "Based on this investigation summary: 'AI drafted the first hypothesis from ticket history, a human validated it against server logs before the postmortem, and AI drafted this postmortem document from the validated findings,' write one sentence for a postmortem that documents where AI was used and what was independently validated by a human. Keep it factual and specific — no marketing language, no vague 'AI-assisted' phrasing.",
       virtualNotes:
-        "Because this is individual drafting, breakout rooms here are for feedback only, not co-authoring — keep them short (8 min) so 700 people aren't stuck waiting on slower groups.",
+        "This closes the loop for the whole audience without needing anyone to draft anything live themselves — the artifact you produce on screen is the model they take back to their own desk, and the Prompt Library link is what they actually use afterward.",
     },
     misconceptions: [],
     scenario: {

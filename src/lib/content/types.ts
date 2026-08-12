@@ -5,11 +5,12 @@ export type Topic = {
 
 export type Activity = {
   title: string;
-  format: "individual" | "breakout" | "poll" | "individual-then-breakout" | "breakout-then-poll";
+  format: "facilitator-demo";
   duration: string;
-  groupSize?: string;
+  engagement?: string;
   description: string;
   steps: string[];
+  facilitatorPrompt: string;
   virtualNotes: string;
 };
 
