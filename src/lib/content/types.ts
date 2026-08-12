@@ -3,14 +3,21 @@ export type Topic = {
   detail: string;
 };
 
+export type LiveDemo = {
+  label: string;
+  minutes: number;
+  setup: string;
+  prompt: string;
+  pointOut: string;
+};
+
 export type Activity = {
   title: string;
   format: "facilitator-demo";
   duration: string;
   engagement?: string;
   description: string;
-  steps: string[];
-  facilitatorPrompt: string;
+  demos: LiveDemo[];
   virtualNotes: string;
 };
 

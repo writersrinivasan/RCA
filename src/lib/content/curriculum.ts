@@ -48,23 +48,44 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Watch AI Fill a Gap With Confidence",
+      title: "Live Demo Sequence: Four Ways to See How AI Actually Behaves",
       format: "facilitator-demo",
       duration: "35 min",
-      engagement: "Optional one-click poll: \"Has this happened on your team? Yes / No\" — glance at the result, no discussion needed.",
+      engagement: "Optional one-click poll after Demo 1: \"Has this happened on your team? Yes / No\" — glance at the result, no discussion needed.",
       description:
-        "You run this live, unscripted, in front of the whole room. Pose the question yourself, paste the prompt into Claude on screen, and narrate what comes back — the room watches the confident-wrong-answer problem happen in real time instead of hearing about it.",
-      steps: [
-        "Pose the question to the room, rhetorically: \"What happens when I give an AI assistant only half the story?\" You're not waiting for answers — say it, then go straight to the demo.",
-        "Open Claude on screen and paste the prompt below live, unedited, so the room sees a real, unrehearsed response — not a slide you prepared earlier.",
-        "Read the response aloud. Pause on the specific technical claim it makes and ask the room, rhetorically: \"Where did that come from? We never gave it that.\"",
-        "Answer your own question: name the one follow-up question a leader should ask before this goes in an incident channel, and tie it directly back to the 'confident wrong answer' problem.",
-        "Run the optional poll below as a 10-second pulse-check, then move on — don't wait for or read out individual answers.",
+        "Four short, real demos, run back to back — each one takes the room somewhere the last one didn't. Pose each question yourself, paste the prompt into Claude on screen, and narrate what comes back.",
+      demos: [
+        {
+          label: "Demo 1 — Watch it fill a gap with confidence",
+          minutes: 9,
+          setup: "Ask the room, rhetorically: \"What happens when I give an AI assistant only half the story?\" Then go straight to the prompt.",
+          prompt: "Here's what I know so far: our email notification service stopped sending password-reset emails starting around 3 PM yesterday. That's the whole report — no logs yet. What's the likely root cause, and how confident are you?",
+          pointOut: "It names a specific technical cause with total confidence despite almost no evidence. Ask the room: \"Where did that come from? We never gave it that.\" Then answer your own question — name the one follow-up a leader should ask before this goes in an incident channel.",
+        },
+        {
+          label: "Demo 2 — Watch it do what it's actually good at",
+          minutes: 8,
+          setup: "\"Now let's flip it — same tool, used well.\"",
+          prompt: "Here are five ticket subject lines from the last week: \"Login button unresponsive on Safari,\" \"Password reset email delayed 20 min,\" \"Two-factor code not arriving,\" \"Account locked after 3 failed attempts,\" \"Reset link expired immediately.\" Summarize what pattern, if any, connects these, in two sentences.",
+          pointOut: "This is summarizing and surfacing a pattern — genuinely useful, low-risk, fast — and notice it's not asserting a root cause, just naming a pattern. That's the good use of AI this module talks about.",
+        },
+        {
+          label: "Demo 3 — Ask it to grade its own confidence",
+          minutes: 9,
+          setup: "\"Here's a trick worth stealing: ask the AI to rate its own certainty.\"",
+          prompt: "Here's what I know so far: our email notification service stopped sending password-reset emails starting around 3 PM yesterday. On a scale of 1–10, how confident are you in a root cause, and what's missing that would raise that number?",
+          pointOut: "Watch whether it actually lowers its number and lists real missing evidence, or just repeats the same guess with a number stapled on. That's the test for whether a tool is honestly calibrated.",
+        },
+        {
+          label: "Demo 4 — Let it describe its own limits",
+          minutes: 9,
+          setup: "\"Last one — let's ask the tool about itself.\"",
+          prompt: "In two sentences, what kind of tasks should a leader NOT trust you to do alone during an incident investigation, and why?",
+          pointOut: "Check whether it mentions live system access or verifying facts against reality — connect this straight back to the field guide and the Claude/Copilot/Cursor distinction.",
+        },
       ],
-      facilitatorPrompt:
-        "Here's what I know so far: our email notification service stopped sending password-reset emails starting around 3 PM yesterday. That's the whole report — no logs yet. What's the likely root cause, and how confident are you?",
       virtualNotes:
-        "This format works at any audience size because nobody needs to respond for it to land — it's a worked example, the same way a keynote demo works for 10 people or 10,000. No breakout rooms, no chat-reading required. Just run the prompt for real and react to it honestly.",
+        "This format works at any audience size because nobody needs to respond for it to land — it's a worked example, the same way a keynote demo works for 10 people or 10,000. No breakout rooms, no chat-reading required. Run each prompt for real and react to it honestly — if a response surprises you, say so.",
     },
     misconceptions: [
       {
@@ -133,23 +154,44 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Watch the Stress-Test Catch the Hallucination",
+      title: "Live Demo Sequence: Stress-Test Both Write-Ups, Then Break It",
       format: "facilitator-demo",
       duration: "28 min",
-      engagement: "Optional one-click poll: \"Would you have signed off on this before seeing the check? Yes / No.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Would you have signed off on this before seeing the check? Yes / No.\"",
       description:
-        "Show the room the Checkout Failure case on screen, then run the actual Evidence Validation prompt from the Prompt Library live — the room watches Claude itself surface the contradiction, in real time, with no rehearsal.",
-      steps: [
-        "Open the Checkout Failure case study on screen and read Write-up B's claim aloud: \"the payment gateway's SSL certificate expired at 2:14 AM...\" Ask the room, rhetorically: \"Would you sign off on this?\"",
-        "Open Claude and paste the prompt below live — it's the same Stress-Test Hypothesis template from this course's Prompt Library, just filled in with this case's real evidence.",
-        "Read the output aloud as it comes back. It will surface that the certificate has 8 months of validity left — pause there and let that land.",
-        "Connect it back for the room: the lesson isn't 'don't trust AI' — it's that the right prompt, aimed at the right evidence, catches a wrong AI claim just as fast as it can produce one. That's evidence-anchoring, demonstrated, not just described.",
-        "Run the optional poll, glance at the split, move on.",
+        "Four short demos on the same Checkout Failure case, each one changing the question you ask the AI — the room sees evidence-anchoring tested from every angle, not just described once.",
+      demos: [
+        {
+          label: "Demo 1 — Catch the hallucination",
+          minutes: 8,
+          setup: "Show the Checkout Failure case on screen, read Write-up B's claim aloud: \"the SSL certificate expired at 2:14 AM...\" Ask the room, rhetorically: \"Would you sign off on this?\"",
+          prompt: "Here is a proposed root cause: \"The payment gateway's SSL certificate expired at 2:14 AM, causing all HTTPS handshakes to the payment processor to fail.\" Here is the available evidence: checkout success rate dropped from 98% to 41% at 02:11 AM and recovered to 96% by 03:05 AM; config change #5521 (\"increase payment timeout threshold\") deployed at 02:09 AM; gateway logs show a spike in \"upstream timeout\" errors — not SSL errors — starting 02:12 AM; the SSL certificate's expiry is confirmed 8 months out via the certificate manager dashboard; rolling back config #5521 at 02:58 AM correlated with recovery within 7 minutes. Do three things: 1) List every piece of evidence that supports the proposed cause. 2) List any evidence that contradicts it. 3) Describe one test that would disprove it if it's wrong.",
+          pointOut: "It will surface that the certificate has 8 months of validity left. Pause there — the AI itself just caught the AI-generated claim.",
+        },
+        {
+          label: "Demo 2 — Now stress-test the one that was right",
+          minutes: 7,
+          setup: "\"Same test, different claim — let's check Write-up A, the one that turned out to be correct.\"",
+          prompt: "Here is a proposed root cause: \"Config change #5521, deployed at 02:09 AM, reduced the payment gateway timeout threshold, causing legitimate slow transactions to be cut off early.\" Here is the same evidence as before. Do three things: 1) List every piece of evidence that supports this cause. 2) List any evidence that contradicts it. 3) Describe one test that would disprove it if it's wrong.",
+          pointOut: "Step 2 comes back thin or empty this time — not because the AI is rubber-stamping it, but because there genuinely isn't much to contradict. That contrast between Demo 1 and Demo 2 is the whole lesson.",
+        },
+        {
+          label: "Demo 3 — Have it argue the wrong side, on purpose",
+          minutes: 7,
+          setup: "\"One more experiment — let's ask it to defend the wrong answer, like a lawyer would.\"",
+          prompt: "Argue as persuasively as you can that the SSL certificate expiration IS the root cause of the checkout failure, using only the evidence from Demo 1. Do your best even if you think it's actually unlikely.",
+          pointOut: "Notice how fluent and confident this sounds even though we already proved it's wrong. A good advocate can make almost anything sound reasonable — which is exactly why fluency can't be your test for correctness.",
+        },
+        {
+          label: "Demo 4 — The one-sentence gut-check",
+          minutes: 6,
+          setup: "\"Last one, fast — just the disproof test, nothing else.\"",
+          prompt: "In one sentence: what single piece of evidence would immediately disprove the claim that the SSL certificate caused this outage?",
+          pointOut: "One sentence, and it's the fastest possible check. This is the version short enough to actually type into an incident channel mid-crisis.",
+        },
       ],
-      facilitatorPrompt:
-        "Here is a proposed root cause: \"The payment gateway's SSL certificate expired at 2:14 AM, causing all HTTPS handshakes to the payment processor to fail.\" Here is the available evidence: checkout success rate dropped from 98% to 41% at 02:11 AM and recovered to 96% by 03:05 AM; config change #5521 (\"increase payment timeout threshold\") deployed at 02:09 AM; gateway logs show a spike in \"upstream timeout\" errors — not SSL errors — starting 02:12 AM; the SSL certificate's expiry is confirmed 8 months out via the certificate manager dashboard; rolling back config #5521 at 02:58 AM correlated with recovery within 7 minutes. Do three things: 1) List every piece of evidence that supports the proposed cause. 2) List any evidence that contradicts it. 3) Describe one test that would disprove it if it's wrong.",
       virtualNotes:
-        "This works as a single shared screen for any size audience — nobody needs their own device or a breakout room for the demonstration to land. If you want participants to try the prompt themselves afterward, point them to this exact template in the Prompt Library's Evidence Validation category.",
+        "This works as a single shared screen for any size audience — nobody needs their own device for the demonstration to land. Point participants to the exact Evidence Validation templates in the Prompt Library afterward so they can run these themselves.",
     },
     misconceptions: [
       {
@@ -208,22 +250,37 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Catch the Wrong Time Window",
+      title: "Live Demo Sequence: Wrong Window, Right Window, Right Question",
       format: "facilitator-demo",
       duration: "17 min",
-      engagement: "Optional one-click poll: \"Would 'no anomalies found' have reassured you? Yes / No.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Would 'no anomalies found' have reassured you? Yes / No.\"",
       description:
-        "A short, sharp version of the same live-demo structure — one prompt, run once, focused entirely on the single skill this module teaches.",
-      steps: [
-        "Set up the scene in one line: an engineer just told you \"the query found nothing, so it's not on our side.\" Ask the room, rhetorically: \"Do you believe that yet?\"",
-        "Paste the prompt below into Claude live — it asks for a plain-language scope explanation of the query that was run.",
-        "Read the response aloud. It will state the query's actual time window, which won't match the incident window you give it — pause on the mismatch.",
-        "Answer your own question: the follow-up that catches this every time is \"what time window did that query actually cover, and does it match when the customer says the issue started?\"",
+        "Short and sharp — three quick demos back to back, focused entirely on the single skill this module teaches.",
+      demos: [
+        {
+          label: "Demo 1 — Catch the wrong window",
+          minutes: 7,
+          setup: "Set the scene: an engineer just told you \"the query found nothing, so it's not on our side.\" Ask the room, rhetorically: \"Do you believe that yet?\"",
+          prompt: "Here is a query that was run: a search for API errors and anomalies over 'the last 60 minutes,' starting at 11:40 AM. Here is the incident window we actually care about: 09:15 AM to 10:45 AM, on our API gateway. Explain, in plain language a non-technical reader can follow, exactly what time window the query covered — then state clearly: does that match the incident window above, or is there a mismatch?",
+          pointOut: "It will state the query's actual window, which won't match the incident window — pause on the mismatch. \"No anomalies\" only means something if the query looked in the right place.",
+        },
+        {
+          label: "Demo 2 — Now ask for the right one",
+          minutes: 6,
+          setup: "\"Let's ask it to try again, with the right window this time.\"",
+          prompt: "Write a plain-language description (not code) of what a good query would look like to check for anomalies in our API gateway between 09:15 AM and 10:45 AM today, including what data source and filters it should use.",
+          pointOut: "Compare this description to the wrong one from Demo 1 — same tool, same skill, just given the right constraint. The lesson isn't 'the AI is bad at this,' it's 'the human has to supply the right window.'",
+        },
+        {
+          label: "Demo 3 — Let it name its own clarifying question",
+          minutes: 4,
+          setup: "\"Last one, fast.\"",
+          prompt: "Before running any query to investigate an incident, what's the one clarifying question you'd want a human to answer first?",
+          pointOut: "If it says something like \"what time window should I search,\" that's the AI essentially agreeing with this entire module.",
+        },
       ],
-      facilitatorPrompt:
-        "Here is a query that was run: a search for API errors and anomalies over 'the last 60 minutes,' starting at 11:40 AM. Here is the incident window we actually care about: 09:15 AM to 10:45 AM, on our API gateway. Explain, in plain language a non-technical reader can follow, exactly what time window the query covered — then state clearly: does that match the incident window above, or is there a mismatch?",
       virtualNotes:
-        "Same shared-screen demo format as Module 2 — no separate setup needed, and no breakout rooms to re-form. Run it back to back with Module 2 to save transition time.",
+        "Same shared-screen demo format as Module 2 — no separate setup needed. Run it back to back with Module 2 to save transition time.",
     },
     misconceptions: [
       {
@@ -284,23 +341,44 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Spar With the Pressured Engineer",
+      title: "Live Demo Sequence: Escalate the Pressure, Round by Round",
       format: "facilitator-demo",
       duration: "32 min",
-      engagement: "Optional one-click poll: \"Did that question feel like it would speed things up or slow them down? Fast / Slow.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Did that question feel like it would speed things up or slow them down? Fast / Slow.\"",
       description:
-        "You play the leader, live and unscripted. Claude plays the pressured engineer proposing a hypothesis — you respond in real time with the validating question, so the room watches the actual conversation instead of discussing it in the abstract.",
-      steps: [
-        "Set the scene for the room: an engineer is about to post an AI-generated root cause into the incident channel, an executive is watching, and there's a customer call in 20 minutes.",
-        "Paste the prompt below into Claude live and let it write the engineer's message — realistic, a little rushed, exactly the kind of message that shows up under pressure.",
-        "Read the message aloud, then respond out loud exactly as you would in the room: the one validating question that doesn't stall momentum. Do this live, don't pre-write it.",
-        "Ask Claude a follow-up in the same thread — \"what would the engineer say back if a leader asked that?\" — read the reply, and critique it with the room: did it actually answer the question, or dodge it?",
-        "Run the optional poll, glance at the result, move on.",
+        "You play the leader, live and unscripted, across four escalating rounds. Claude plays the pressured engineer — you respond in real time each round, so the room watches the actual conversation instead of discussing it in the abstract.",
+      demos: [
+        {
+          label: "Demo 1 — The first message under pressure",
+          minutes: 9,
+          setup: "Set the scene: an engineer is about to post an AI-generated root cause into the incident channel, an executive is watching, and there's a customer call in 20 minutes.",
+          prompt: "Role-play as a support engineer under pressure. It's 20 minutes before a customer call, an executive is watching the incident channel, and an AI assistant just gave you a plausible-sounding root cause for the outage. Write the single message you'd post in the incident channel proposing it as the cause, in a realistic, slightly rushed tone — the way someone actually types under deadline pressure, not a polished report.",
+          pointOut: "Read the message aloud, then respond out loud exactly as you would in the room — the one validating question that doesn't stall momentum. Don't pre-write your response; do it live.",
+        },
+        {
+          label: "Demo 2 — A second engineer disagrees",
+          minutes: 8,
+          setup: "\"Let's raise the pressure — a second engineer just jumped into the thread.\"",
+          prompt: "Continue the role-play. A second engineer just replied in the thread: \"I don't think that's it — I saw something similar last month and it was a different cause.\" Write their message, in the same realistic, slightly informal tone.",
+          pointOut: "Now there are two competing claims in the channel. Model out loud how you'd handle this without picking a side prematurely — ask what evidence each person actually has.",
+        },
+        {
+          label: "Demo 3 — The defensive pushback",
+          minutes: 8,
+          setup: "\"Now let's pressure-test the validating question itself.\"",
+          prompt: "Play the first engineer again. The leader just asked: \"what does the log actually show?\" Respond the way a rushed, slightly defensive engineer might respond under deadline pressure — realistically, not ideally.",
+          pointOut: "This is the real world — a good question sometimes gets friction back, not gratitude. Model how you'd respond to THAT, calmly, without escalating.",
+        },
+        {
+          label: "Demo 4 — The five-minutes-later version",
+          minutes: 7,
+          setup: "\"Last one — let's see what this looks like once it's actually validated.\"",
+          prompt: "Now write the calm, evidence-backed version of the original message from Demo 1, as if the team had taken five minutes to check the logs first.",
+          pointOut: "Put this side by side with Demo 1's very first message. Same information, five extra minutes, a completely different level of trust it deserves.",
+        },
       ],
-      facilitatorPrompt:
-        "Role-play as a support engineer under pressure. It's 20 minutes before a customer call, an executive is watching the incident channel, and an AI assistant just gave you a plausible-sounding root cause for the outage. Write the single message you'd post in the incident channel proposing it as the cause, in a realistic, slightly rushed tone — the way someone actually types under deadline pressure, not a polished report.",
       virtualNotes:
-        "This is genuinely more consistent at scale than 350 pairs improvising role-play simultaneously — everyone sees the same real exchange and can judge the validating question for themselves. No breakout rooms, no pairing logistics, no risk of a room going quiet with nobody willing to go first.",
+        "This is genuinely more consistent at scale than hundreds of pairs improvising role-play simultaneously — everyone sees the same real exchange and can judge each validating question for themselves. No breakout rooms, no pairing logistics, no risk of a room going quiet with nobody willing to go first.",
     },
     misconceptions: [
       {
@@ -369,21 +447,42 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Draft a Fishbone From Real Notes",
+      title: "Live Demo Sequence: Run the Same Incident Through Three Frameworks",
       format: "facilitator-demo",
       duration: "32 min",
-      engagement: "Optional one-click poll: \"Which framework would you have reached for first? 5 Whys / Fishbone.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Which framework would you have reached for first? 5 Whys / Fishbone.\"",
       description:
-        "Pose the framework-choice question yourself, then run the actual Framework Application prompt live against a real recurring incident — the room watches a Fishbone diagram get built in real time from messy notes.",
-      steps: [
-        "Ask the room, rhetorically: \"This incident kept happening — three times, three different 'root causes.' What's wrong with how it was investigated?\" Don't wait for an answer; go straight to the demo.",
-        "Open Frameworks on screen and skim all four tabs for 60 seconds so the room has the mental model fresh before the demo.",
-        "Paste the prompt below into Claude live — it's the Framework Application template from the Prompt Library, filled in with a real recurring incident's notes.",
-        "Read the four categories back as they populate. Point out anything that comes back empty — that's the model correctly declining to force an entry, not a gap in the demo.",
-        "Answer your own opening question: this is exactly what three separate 5 Whys sessions missed, and exactly what a Fishbone pass catches by comparing categories instead of chasing one chain at a time.",
+        "One recurring incident, run through three different frameworks live, back to back — the room watches the exact same evidence produce three different kinds of insight, depending on which lens you point at it.",
+      demos: [
+        {
+          label: "Demo 1 — Fishbone from real notes",
+          minutes: 9,
+          setup: "Ask the room, rhetorically: \"This incident kept happening — three times, three different 'root causes.' What's wrong with how it was investigated?\" Go straight to the demo.",
+          prompt: "Here are raw notes from an incident: a support-ticket sync queue backed up after a scheduled maintenance window, and the manual re-sync trigger was skipped. This is the third time this has happened in two months — once after a deploy, once after a database failover, always with the same missed manual step, and the pipeline itself never actually errors. Sort every potential contributing factor into four categories: People, Process, Technology, Environment. Only include factors that have real support in the notes above — if a category has nothing to support it, say so instead of forcing an entry.",
+          pointOut: "Read the four categories as they populate — point out anything that comes back empty, that's the model correctly declining to force an entry, not a gap in the demo.",
+        },
+        {
+          label: "Demo 2 — Now run 5 Whys on the same incident",
+          minutes: 8,
+          setup: "\"Let's run the same incident through 5 Whys instead, live, and see what it misses.\"",
+          prompt: "Using only this incident: \"sync queue backed up after a scheduled maintenance window; manual re-sync trigger was skipped,\" ask \"why\" five times, each answer building on the last, to find a root cause.",
+          pointOut: "This chain only ever looks at ONE incident — it can't see that this happened two other times for different trigger events. That's exactly the blind spot the Fishbone pass just showed us.",
+        },
+        {
+          label: "Demo 3 — A fresh incident, IS/IS-NOT",
+          minutes: 8,
+          setup: "\"One more framework, one more incident — this time the scope itself is the problem.\"",
+          prompt: "Build an IS/IS-NOT table across Region, Platform, and Time for this: \"EU mobile app users reported checkout errors between 9 and 11 AM; US and desktop users reported nothing.\" Use only what's stated.",
+          pointOut: "Look at how sharp the IS-NOT column makes the question — \"why mobile and not desktop\" is a far better question than \"something's wrong with checkout.\"",
+        },
+        {
+          label: "Demo 4 — Ask it to pick the framework",
+          minutes: 7,
+          setup: "\"Last one — let's see if it agrees with our own decision guide.\"",
+          prompt: "In one sentence, which RCA framework — 5 Whys, Fishbone, Fault Tree, or Kepner-Tregoe — fits this best, and why: \"a payment outage that required three unrelated systems to fail at the same time\"?",
+          pointOut: "It should land on Fault Tree, because of \"unrelated systems failing together.\" Check whether it catches that signal the way our decision guide does.",
+        },
       ],
-      facilitatorPrompt:
-        "Here are raw notes from an incident: a support-ticket sync queue backed up after a scheduled maintenance window, and the manual re-sync trigger was skipped. This is the third time this has happened in two months — once after a deploy, once after a database failover, always with the same missed manual step, and the pipeline itself never actually errors. Sort every potential contributing factor into four categories: People, Process, Technology, Environment. Only include factors that have real support in the notes above — if a category has nothing to support it, say so instead of forcing an entry.",
       virtualNotes:
         "One shared screen, no breakout rooms, no per-table framework selection to coordinate — every attendee sees the same worked example and can apply it to their own incident afterward using the Frameworks and Prompt Library pages on their own time.",
     },
@@ -449,23 +548,37 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Build the Timeline Before the Hypothesis",
+      title: "Live Demo Sequence: Evidence First, Agenda Second, Tone Third",
       format: "facilitator-demo",
       duration: "21 min",
-      engagement: "Optional one-click poll: \"Would you have opened with the AI hypothesis or the timeline? Hypothesis / Timeline.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Would you have opened with the AI hypothesis or the timeline? Hypothesis / Timeline.\"",
       description:
-        "Model the opening minute of a retrospective live: run the Timeline Reconstruction prompt on real evidence before anyone in the room sees the AI-generated hypothesis, so the ordering itself becomes the demonstration.",
-      steps: [
-        "Tell the room the setup: the CRM Sync Lag incident, and an AI-generated hypothesis that's already sitting in the incident channel — but you're not opening with it.",
-        "Paste the prompt below into Claude live and let it build the timeline from the raw signals alone, no hypothesis included yet.",
-        "Read the timeline aloud and ask the room, rhetorically: \"Based on just this, what do you think the pattern is?\" Give it three seconds, then answer it yourself.",
-        "Now reveal the AI-generated hypothesis on screen for the first time, and check it against the timeline you just built together — confirm or reject it live, out loud.",
-        "Run the optional poll to show how many people's instinct matched yours before the reveal.",
+        "Three short demos that model the opening minutes of a retrospective, live — the ordering, the agenda, and the tone, each demonstrated rather than described.",
+      demos: [
+        {
+          label: "Demo 1 — Build the timeline before the hypothesis",
+          minutes: 9,
+          setup: "Tell the room: the CRM Sync Lag incident, and an AI-generated hypothesis already sitting in the channel — but you're not opening with it.",
+          prompt: "Build a chronological timeline from these incident notes, evidence only, no conclusions: sync queue backed up after a scheduled maintenance window 6 weeks ago; sync queue backed up after a deploy 3 weeks ago; sync queue backed up after a database failover this week; in all three cases the sync pipeline itself never logged an error, it silently paused waiting for a manual re-sync trigger; that manual trigger step is documented only on a wiki page linked from an archived onboarding doc. Sort strictly by time and flag anything that repeats across all three incidents.",
+          pointOut: "Ask the room, rhetorically: \"Based on just this, what's the pattern?\" Give it three seconds, then answer yourself. Now reveal the AI-generated hypothesis for the first time and check it against the timeline — confirm or reject it live.",
+        },
+        {
+          label: "Demo 2 — Have it draft the agenda itself",
+          minutes: 6,
+          setup: "\"Let's have it draft the actual agenda for this meeting.\"",
+          prompt: "Draft a 5-step agenda for a 30-minute incident retrospective that puts evidence review before any hypothesis discussion, for the CRM sync lag incident we just built the timeline for.",
+          pointOut: "Check whether hypothesis review comes before or after the evidence steps in its own agenda — that ordering is the whole lesson of this module, handed back to us in outline form.",
+        },
+        {
+          label: "Demo 3 — Rewrite the blame into evidence",
+          minutes: 6,
+          setup: "\"One more, fast — the blameless-tone test.\"",
+          prompt: "Rewrite this in a blameless tone without losing the evidence standard: \"Someone should have caught that the retry logic was broken before this shipped.\"",
+          pointOut: "Notice it likely shifts the sentence from a person to a process. That's the line this module draws between blameless and uncritical.",
+        },
       ],
-      facilitatorPrompt:
-        "Build a chronological timeline from these incident notes, evidence only, no conclusions: sync queue backed up after a scheduled maintenance window 6 weeks ago; sync queue backed up after a deploy 3 weeks ago; sync queue backed up after a database failover this week; in all three cases the sync pipeline itself never logged an error, it silently paused waiting for a manual re-sync trigger; that manual trigger step is documented only on a wiki page linked from an archived onboarding doc. Sort strictly by time and flag anything that repeats across all three incidents.",
       virtualNotes:
-        "Running this as one live demo, in front of everyone, is actually closer to the real skill than 100 separate rooms each electing an inexperienced facilitator — the room watches an evidence-first opening modeled correctly once, cleanly, before they ever try it themselves back at their own desk.",
+        "Running this as one live demo, in front of everyone, is actually closer to the real skill than hundreds of separate rooms each electing an inexperienced facilitator — the room watches an evidence-first opening modeled correctly once, cleanly, before they ever try it themselves back at their own desk.",
     },
     misconceptions: [
       {
@@ -526,23 +639,37 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Catch the Overpromise Before It Sends",
+      title: "Live Demo Sequence: Same Facts, Three Audiences",
       format: "facilitator-demo",
       duration: "21 min",
-      engagement: "Optional one-click poll: \"Would you have sent that draft as-is? Yes / No.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Would you have sent that draft as-is? Yes / No.\"",
       description:
-        "Run the actual Customer-Facing Update prompt live, then read the draft it produces with the three-check pass out loud — the room watches the exact edit a leader should make, on a real draft, not a cleaned-up example.",
-      steps: [
-        "Tell the room what's about to happen: a real AI-drafted customer update, generated live, that you're going to try to break using the three checks — accuracy, hedging, audience fit.",
-        "Paste the prompt below into Claude on screen and let it produce the draft, unedited.",
-        "Read the draft aloud, then run the three checks against it one at a time, out loud, marking any line that overpromises or names a cause too early.",
-        "Read the model's own self-flagged \"sentences I was unsure about\" list — compare it against what you just caught. Where do they agree, and where did you catch something it didn't flag itself?",
-        "Run the optional poll, glance at the split, move on.",
+        "The same incident, drafted three different ways live — a customer update, an executive summary, and a deliberately overconfident version — so the room sees exactly how a few words change the risk.",
+      demos: [
+        {
+          label: "Demo 1 — The customer draft, stress-tested",
+          minutes: 9,
+          setup: "Tell the room: a real AI-drafted customer update, generated live, that you're going to try to break using the three checks — accuracy, hedging, audience fit.",
+          prompt: "Draft a customer-facing status update based on this internal summary: checkout failures affected roughly 60% of transactions for about an hour; the team believes a recent configuration change caused it and has since rolled that change back; success rates have returned to normal but full confirmation is still in progress. Requirements: state the customer-visible impact clearly and first. Do not name an internal root cause unless it has been fully confirmed — use 'we are investigating' language if it hasn't. Do not use language that could be read as admitting fault or liability unless that has been explicitly approved. Keep it under 100 words. After the draft, list separately any sentence you were unsure about from a liability or overpromising standpoint.",
+          pointOut: "Run the three checks against it out loud, then read the model's own self-flagged \"sentences I was unsure about\" list — compare it to what you just caught yourself.",
+        },
+        {
+          label: "Demo 2 — The same facts, for an executive",
+          minutes: 6,
+          setup: "\"Same incident, different audience — let's see the executive version.\"",
+          prompt: "Here is a technical incident summary: checkout failures affected roughly 60% of transactions for about an hour; the team believes a recent configuration change caused it and has since rolled that change back; success rates have returned to normal but full confirmation is still in progress. Rewrite this as a 3-sentence update for an executive with no technical background, matching the team's actual confidence level exactly.",
+          pointOut: "Put this next to the customer version from Demo 1 — same facts, two different translations. Neither one lies, but they read completely differently.",
+        },
+        {
+          label: "Demo 3 — The version that overpromises on purpose",
+          minutes: 6,
+          setup: "\"One more experiment — let's ask it to write the version that ships when nobody's paying attention.\"",
+          prompt: "Now write a version of the same update that sounds reassuring and confident, even overstating certainty slightly, the way someone in a hurry might write it without meaning to overpromise.",
+          pointOut: "Read it next to Demo 1's version — the difference is usually two or three words, not a rewrite. That's how easy it is to overpromise without noticing.",
+        },
       ],
-      facilitatorPrompt:
-        "Draft a customer-facing status update based on this internal summary: checkout failures affected roughly 60% of transactions for about an hour; the team believes a recent configuration change caused it and has since rolled that change back; success rates have returned to normal but full confirmation is still in progress. Requirements: state the customer-visible impact clearly and first. Do not name an internal root cause unless it has been fully confirmed — use 'we are investigating' language if it hasn't. Do not use language that could be read as admitting fault or liability unless that has been explicitly approved. Keep it under 100 words. After the draft, list separately any sentence you were unsure about from a liability or overpromising standpoint.",
       virtualNotes:
-        "One shared screen carries this entire exercise — every attendee can go run the same template themselves afterward with their own incident details, using the direct link to this prompt in the Prompt Library.",
+        "One shared screen carries this entire exercise — every attendee can go run the same templates themselves afterward with their own incident details, using the direct links in the Prompt Library.",
     },
     misconceptions: [
       {
@@ -617,23 +744,44 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Let AI Flag What Needs Redacting",
+      title: "Live Demo Sequence: Redact It, Check It, Escalate It, Write It Down",
       format: "facilitator-demo",
       duration: "32 min",
-      engagement: "Optional one-click poll: \"Would you have spotted all of these yourself? Yes / No.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Would you have spotted all of these yourself? Yes / No.\"",
       description:
-        "Run the actual Data Sanitization prompt live against a planted, realistic log snippet, then walk the Checklist against Day 2's retrospective on screen — two short demos back to back, both narrated, neither requiring the room to do anything but watch and answer a single poll.",
-      steps: [
-        "Tell the room: \"I'm going to paste a realistic log snippet and have Claude find everything in it that shouldn't be there.\" Read the snippet aloud first so they can try to spot it themselves, silently.",
-        "Paste the prompt below into Claude live and let it flag every PII/credential/token item it finds.",
-        "Read the flagged list aloud and compare it against what you personally caught reading it cold — be honest if it caught something you missed.",
-        "Switch to the Checklist page on screen and walk the Trust-Calibration items against Day 2's CRM Sync Lag retrospective, checking off live which ones would have caught the planted flaw and narrating your reasoning for each.",
-        "Run the optional poll, glance at the split, move on.",
+        "Four short demos covering all four governance moves this module teaches — sanitize, calibrate trust, know when to escalate, and write the policy down — each one run live, none requiring anything from the room but a single poll.",
+      demos: [
+        {
+          label: "Demo 1 — Let AI flag what needs redacting",
+          minutes: 8,
+          setup: "\"I'm going to paste a realistic log snippet and have Claude find everything in it that shouldn't be there.\" Read the snippet aloud first so the room can try to spot it themselves, silently.",
+          prompt: "Review this text and list every piece of information that looks like it could be PII, a credential, or a token — names, emails, account IDs, session tokens, API keys, IP addresses, phone numbers, or anything else that could identify a specific person or grant access to a system: \"Customer jane.doe@example.com (acct #88213) reported the issue at 09:41. Pulled logs from host prod-api-07, session token eyJhbGciOiJIUzI1NiJ9.mock, source IP 203.0.113.44. Escalated to on-call via internal Slack, cc'd manager rgupta@example.com.\" For each item found, quote the exact snippet and say what category it falls into.",
+          pointOut: "Read the flagged list aloud and compare it against what you personally caught reading it cold — be honest if it caught something you missed.",
+        },
+        {
+          label: "Demo 2 — Run the trust-calibration checks live",
+          minutes: 9,
+          setup: "Switch to the Checklist page on screen so the room can see the three Trust-Calibration items while you run this.",
+          prompt: "Here is a hypothesis from an incident retrospective: \"the sync pipeline requires a manual re-sync trigger after any disruption, and that step was missed each time.\" Apply three checks and answer each in one sentence: 1) Source-grounding — does it trace to specific evidence? 2) Alternative-hypothesis — were other explanations genuinely considered? 3) Blast-radius — what does it cost if we're wrong and act on it anyway?",
+          pointOut: "Check off the matching items on the Checklist page live as each answer comes back, narrating your reasoning — this is the checklist and the AI cross-checking each other in real time.",
+        },
+        {
+          label: "Demo 3 — Test the escalation judgment",
+          minutes: 8,
+          setup: "\"Let's test the escalation-trigger judgment live, on a new scenario.\"",
+          prompt: "In one sentence, does this incident need named human sign-off before an AI-assisted conclusion is used, and why: \"unusual login patterns detected on 40 customer accounts overnight, pattern unclear\"?",
+          pointOut: "This should trip the security-incident trigger immediately — check whether it says so, and note that it's a security question, not a technical one.",
+        },
+        {
+          label: "Demo 4 — Draft the policy addendum",
+          minutes: 7,
+          setup: "\"Last one — let's see if it can keep this lightweight.\"",
+          prompt: "Draft one paragraph to add to an existing incident response policy that requires human sign-off before AI-assisted root causes are finalized for security incidents, without creating a new approval workflow.",
+          pointOut: "Read it aloud — if it's longer than a paragraph or invents a new process, that's worth naming: even AI defaults toward adding process instead of staying lightweight, which is the exact trap this module warns against.",
+        },
       ],
-      facilitatorPrompt:
-        "Review this text and list every piece of information that looks like it could be PII, a credential, or a token — names, emails, account IDs, session tokens, API keys, IP addresses, phone numbers, or anything else that could identify a specific person or grant access to a system: \"Customer jane.doe@example.com (acct #88213) reported the issue at 09:41. Pulled logs from host prod-api-07, session token eyJhbGciOiJIUzI1NiJ9.mock, source IP 203.0.113.44. Escalated to on-call via internal Slack, cc'd manager rgupta@example.com.\" For each item found, quote the exact snippet and say what category it falls into.",
       virtualNotes:
-        "Both halves of this demo run from one shared screen — the Checklist's per-browser saved state (via localStorage) means you can safely reset it before the session without affecting anything else, and nobody in the audience needs their own copy open for the demo to work.",
+        "All four demos run from one shared screen — the Checklist's per-browser saved state (via localStorage) means you can safely reset it before the session without affecting anything else, and nobody in the audience needs their own copy open for the demo to work.",
     },
     misconceptions: [
       {
@@ -708,23 +856,37 @@ export const modules: CourseModule[] = [
       },
     ],
     activity: {
-      title: "Live Demo: Draft a Playbook Entry From Scratch",
+      title: "Live Demo Sequence: Build the Playbook, Piece by Piece",
       format: "facilitator-demo",
       duration: "21 min",
-      engagement: "Optional one-click poll: \"Do you have anything like this documented today? Yes / No.\"",
+      engagement: "Optional one-click poll after Demo 1: \"Do you have anything like this documented today? Yes / No.\"",
       description:
-        "Draft a real three-line playbook entry live, for a made-up but realistic incident type, so the room sees exactly how little effort this takes — then point everyone to the exact templates they'll adapt on their own afterward.",
-      steps: [
-        "Tell the room the target: a three-line playbook entry — when AI is used, what sign-off is required, how it's documented — for one recurring incident type. Pick one out loud (e.g., \"password reset failures\").",
-        "Paste the prompt below into Claude live and let it draft the AI-involvement documentation line as a starting point.",
-        "Read it aloud, then write the other two lines yourself, live, thinking out loud about what sign-off trigger would actually get followed rather than ignored.",
-        "Open Prompt Library on screen and point to the two categories most relevant to the incident type you picked — tell the room these are the ones to start with for their own team.",
-        "Run the optional poll, glance at the split, close the module.",
+        "Three short demos that build one complete artifact live — the AI-involvement line, the full three-line entry, and the two metrics worth reporting upward — so the room leaves with the whole shape, not just a fragment.",
+      demos: [
+        {
+          label: "Demo 1 — Draft the AI-involvement line",
+          minutes: 7,
+          setup: "Tell the room the target: a three-line playbook entry for one recurring incident type. Pick one out loud (e.g., \"password reset failures\").",
+          prompt: "Based on this investigation summary: \"AI drafted the first hypothesis from ticket history, a human validated it against server logs before the postmortem, and AI drafted this postmortem document from the validated findings,\" write one sentence for a postmortem that documents where AI was used and what was independently validated by a human. Keep it factual and specific — no marketing language, no vague \"AI-assisted\" phrasing.",
+          pointOut: "Read it aloud — this is the third line of the playbook entry, done. Notice how specific it is compared to a generic \"AI was used here.\"",
+        },
+        {
+          label: "Demo 2 — Draft all three lines at once",
+          minutes: 8,
+          setup: "\"Now let's see if it can draft the whole entry, not just one line.\"",
+          prompt: "Draft a three-line playbook entry for \"password reset failures\": when AI is used, what sign-off is required, how AI involvement gets documented. Keep each line to one sentence.",
+          pointOut: "Read all three lines aloud, then critique the sign-off line specifically, out loud: is it something a tired on-call engineer could actually follow at 2 AM, or does it just sound good?",
+        },
+        {
+          label: "Demo 3 — Ask it for the metrics worth reporting",
+          minutes: 6,
+          setup: "\"Last one — let's check its instincts against ours on what to report upward.\"",
+          prompt: "In one sentence each, name two metrics a team could track to show whether AI-assisted RCA is actually working, beyond just \"we use AI now.\"",
+          pointOut: "Compare its answer to time-to-hypothesis and hypothesis-accuracy-rate from this module. If it lands close, that's confirmation those are the right two to report upward. Then open Prompt Library and point to the two categories the room should start with.",
+        },
       ],
-      facilitatorPrompt:
-        "Based on this investigation summary: 'AI drafted the first hypothesis from ticket history, a human validated it against server logs before the postmortem, and AI drafted this postmortem document from the validated findings,' write one sentence for a postmortem that documents where AI was used and what was independently validated by a human. Keep it factual and specific — no marketing language, no vague 'AI-assisted' phrasing.",
       virtualNotes:
-        "This closes the loop for the whole audience without needing anyone to draft anything live themselves — the artifact you produce on screen is the model they take back to their own desk, and the Prompt Library link is what they actually use afterward.",
+        "This closes the loop for the whole audience without needing anyone to draft anything live themselves — the artifacts you produce on screen are the models they take back to their own desks, and the Prompt Library link is what they actually use afterward.",
     },
     misconceptions: [],
     scenario: {

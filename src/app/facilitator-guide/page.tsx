@@ -48,29 +48,29 @@ function P({ children }: { children: React.ReactNode }) {
 const day1Rows = [
   { time: "9:00 – 9:10", segment: "Welcome, Context Setting & Baseline Poll", page: "Home", href: "/", doThis: "Share your screen on the homepage hero. Run one simple baseline poll: \"how is your team already using AI in troubleshooting today?\" Glance at the split — don't read individual answers." },
   { time: "9:10 – 9:25", segment: "Module 1 — Framing (theory)", page: "Day 1 / Module 1", href: "/day/1/why-ai-changes-rca", doThis: "Tight 15-minute talk: the confident-wrong-answer problem and the AI-tools field guide." },
-  { time: "9:25 – 10:00", segment: "Module 1 — Live Demo: Watch AI Fill a Gap With Confidence", page: "Day 1 / Module 1", href: "/day/1/why-ai-changes-rca", doThis: "Pose the question rhetorically. Paste the module's prompt into Claude on screen, unedited. Read the response aloud, then answer your own follow-up question. Run the optional poll and move on." },
+  { time: "9:25 – 10:00", segment: "Module 1 — Live Demo Sequence (4 demos)", page: "Day 1 / Module 1", href: "/day/1/why-ai-changes-rca", doThis: "Run all four demos back to back, in order, straight off the module page: the confident-gap demo, the good-use-of-AI demo, the self-confidence-rating demo, and the self-described-limits demo. Each has its own setup line, prompt, and point-out cue built in." },
   { time: "10:00 – 10:12", segment: "Module 2 — Framing (theory)", page: "Day 1 / Module 2", href: "/day/1/what-good-looks-like", doThis: "The three-question evaluation pass, tight: what evidence, what else was ruled out, what would prove it wrong." },
-  { time: "10:12 – 10:40", segment: "Module 2 — Live Demo: Watch the Stress-Test Catch the Hallucination", page: "Case Study: Checkout Failure", href: "/case-studies/checkout-failure", doThis: "Show Write-up B's claim on screen. Paste the Evidence Validation prompt into Claude live — it will surface the certificate contradiction itself. Read it aloud and connect it back." },
+  { time: "10:12 – 10:40", segment: "Module 2 — Live Demo Sequence (4 demos)", page: "Case Study: Checkout Failure", href: "/case-studies/checkout-failure", doThis: "Show the case on screen first, then run all four demos from the module page: stress-test the hallucinated claim, stress-test the correct one, have the AI argue the wrong side, then the one-sentence gut-check." },
   { time: "10:40 – 10:48", segment: "Module 2B — Framing (theory)", page: "Day 1 / Module 2B", href: "/day/1/reading-ai-evidence", doThis: "60-second refresher: query results are only as good as the time window they searched." },
-  { time: "10:48 – 11:05", segment: "Module 2B — Live Demo: Catch the Wrong Time Window", page: "Day 1 / Module 2B", href: "/day/1/reading-ai-evidence", doThis: "Paste the query-scope prompt live. Read the mismatched time window aloud — no need to re-open a new browser tab, run it right after Module 2." },
+  { time: "10:48 – 11:05", segment: "Module 2B — Live Demo Sequence (3 demos)", page: "Day 1 / Module 2B", href: "/day/1/reading-ai-evidence", doThis: "Wrong window, right window, then the AI's own clarifying question — all three prompts are on the module page, run back to back right after Module 2." },
 ];
 
 const day2Rows = [
   { time: "9:00 – 9:13", segment: "Module 3 — Framing (theory)", page: "Day 2 / Module 3", href: "/day/2/coaching-your-team", doThis: "Name the three anti-patterns (prompt-and-paste, anchoring, skipping validation under deadline) fast — the demo is where the room actually learns this." },
-  { time: "9:13 – 9:45", segment: "Module 3 — Live Demo: Spar With the Pressured Engineer", page: "Day 2 / Module 3", href: "/day/2/coaching-your-team", doThis: "Paste the role-play prompt into Claude live and let it write the engineer's message. Respond out loud as the leader, unscripted. Ask a live follow-up and critique the reply with the room." },
+  { time: "9:13 – 9:45", segment: "Module 3 — Live Demo Sequence (4 escalating rounds)", page: "Day 2 / Module 3", href: "/day/2/coaching-your-team", doThis: "Run all four rounds from the module page in order — the first pressured message, a second engineer disagreeing, a defensive pushback, and the validated five-minutes-later version. Respond live and unscripted each round." },
   { time: "9:45 – 9:58", segment: "Module 4 — Framing (theory)", page: "Frameworks", href: "/frameworks", doThis: "Quick tour of all four Frameworks tabs on screen so the room has the mental model fresh before the demo." },
-  { time: "9:58 – 10:30", segment: "Module 4 — Live Demo: Draft a Fishbone From Real Notes", page: "Day 2 / Module 4", href: "/day/2/mapping-frameworks", doThis: "Paste the Fishbone prompt into Claude live against a real recurring-incident's notes. Read the four categories as they populate; point out any that come back empty on purpose." },
+  { time: "9:58 – 10:30", segment: "Module 4 — Live Demo Sequence (4 demos)", page: "Day 2 / Module 4", href: "/day/2/mapping-frameworks", doThis: "Run the same incident through Fishbone, then 5 Whys, then a fresh incident through IS/IS-NOT, then ask the AI to pick a framework itself — all four prompts on the module page." },
   { time: "10:30 – 10:39", segment: "Module 5 — Framing (theory)", page: "Day 2 / Module 5", href: "/day/2/leading-retrospective", doThis: "One idea: evidence before hypothesis, every time, even when the AI's hypothesis showed up first." },
-  { time: "10:39 – 11:00", segment: "Module 5 — Live Demo: Build the Timeline Before the Hypothesis", page: "Case Study: CRM Sync Lag", href: "/case-studies/sync-lag", doThis: "Paste the Timeline Reconstruction prompt live, evidence only — no hypothesis yet. Only reveal the AI-generated hypothesis afterward, then confirm or reject it against the timeline together." },
+  { time: "10:39 – 11:00", segment: "Module 5 — Live Demo Sequence (3 demos)", page: "Case Study: CRM Sync Lag", href: "/case-studies/sync-lag", doThis: "Build the timeline before revealing the hypothesis, have the AI draft the retrospective agenda itself, then rewrite a blame-toned sentence into an evidence-toned one — all three on the module page." },
 ];
 
 const day3Rows = [
   { time: "9:00 – 9:09", segment: "Module 5B — Framing (theory)", page: "Day 3 / Module 5B", href: "/day/3/incident-communication", doThis: "The three-check pass in 9 minutes: accuracy, hedging, audience fit." },
-  { time: "9:09 – 9:30", segment: "Module 5B — Live Demo: Catch the Overpromise Before It Sends", page: "Day 3 / Module 5B", href: "/day/3/incident-communication", doThis: "Paste the Customer-Facing Update prompt live. Run the three-check pass against the draft out loud, then compare against the model's own self-flagged uncertain lines." },
+  { time: "9:09 – 9:30", segment: "Module 5B — Live Demo Sequence (3 demos)", page: "Day 3 / Module 5B", href: "/day/3/incident-communication", doThis: "Stress-test the customer draft, then the executive version of the same facts, then the version that overpromises on purpose — all three prompts on the module page." },
   { time: "9:30 – 9:43", segment: "Module 6 — Framing (theory)", page: "Day 3 / Module 6", href: "/day/3/governance-risk-privacy", doThis: "Two separate questions, stated plainly: should I trust this conclusion, and should this data even be in this tool." },
-  { time: "9:43 – 10:15", segment: "Module 6 — Live Demo: Let AI Flag What Needs Redacting", page: "Checklist", href: "/checklist", doThis: "Paste the sanitization prompt live against a planted log snippet. Then switch to the Checklist page and walk Trust-Calibration items against Day 2's case, narrating your reasoning live." },
+  { time: "9:43 – 10:15", segment: "Module 6 — Live Demo Sequence (4 demos)", page: "Checklist", href: "/checklist", doThis: "Redact a planted log snippet, run the trust-calibration checks live against the Checklist page, test the escalation judgment on a new scenario, then draft the policy addendum — all four on the module page." },
   { time: "10:15 – 10:24", segment: "Module 7 — Framing (theory)", page: "Day 3 / Module 7", href: "/day/3/playbook-prompt-library", doThis: "Anatomy of a three-line playbook entry — that's the whole framing, the rest is the demo." },
-  { time: "10:24 – 10:45", segment: "Module 7 — Live Demo: Draft a Playbook Entry From Scratch", page: "Prompt Library", href: "/prompt-library", doThis: "Paste the AI-involvement documentation prompt live. Write the other two playbook lines yourself, out loud. Point to the two Prompt Library categories the room should start with." },
+  { time: "10:24 – 10:45", segment: "Module 7 — Live Demo Sequence (3 demos)", page: "Prompt Library", href: "/prompt-library", doThis: "Draft the AI-involvement line, then the full three-line entry, then ask the AI for the two metrics worth reporting upward — all three prompts on the module page, then point to Prompt Library categories to close." },
   { time: "10:45 – 11:00", segment: "Capstone: Synthesis & Action Planning", page: "Learn the Concepts (Cheat Sheet)", href: "/notes#cheat-sheet", doThis: "Share the one-page cheat sheet. Ask everyone to post their one commitment in chat on your cue — scroll and read a sample aloud before closing. This is the one moment worth letting the crowd speak; keep it to one line each." },
 ];
 
@@ -164,7 +164,7 @@ export default function FacilitatorGuidePage() {
                   <ol className="mt-5 space-y-3">
                     {[
                       ["Pose the question yourself", "Ask it to the room, rhetorically. You are not waiting for an answer — say it, then move straight into the demo. This replaces \"ask for a show of hands\" from earlier drafts of this guide."],
-                      ["Run the real prompt, live, on screen", "Every module page has an exact, ready-to-paste prompt with a Copy button. Paste it into Claude unedited in front of everyone — the point is that it's real and unrehearsed, not a slide."],
+                      ["Run the real prompts, live, on screen", "Every module page has a sequence of 3–4 exact, ready-to-paste prompts, each with a Copy button and its own setup line and point-out cue. Paste them into Claude unedited, one after another, in front of everyone — the point is that they're real and unrehearsed, not slides."],
                       ["Read the response aloud and react honestly", "If it says something surprising, say so. If it's exactly what you expected, say that too. The room is learning to read AI output by watching you do it in real time."],
                       ["Answer your own rhetorical question", "Close the loop yourself — name the leadership move, the follow-up question, or the takeaway, out loud, rather than opening the floor."],
                       ["Optionally run a one-click poll", "Every activity has a short, single-click poll suggestion. Glance at the split and move on — it's a pulse-check, not a discussion."],
@@ -268,7 +268,7 @@ export default function FacilitatorGuidePage() {
                   </P>
                   <ol className="mt-5 space-y-3">
                     {[
-                      ["A real prompt, pasted live", "Not a screenshot, not a slide — an actual AI response generated in front of everyone, with all the natural variation that implies."],
+                      ["A short sequence of real prompts, pasted live", "Not a screenshot, not a slide — 3–4 actual AI responses generated in front of everyone, each with its own beat, with all the natural variation that implies."],
                       ["A leader's actual reasoning, out loud", "You model the follow-up question, the skepticism, the connection back to the lesson — narrated, not summarized after the fact."],
                       ["One honest reaction to the output", "If the AI says something unexpected, that's not a failed demo — it's the most convincing possible teaching moment."],
                       ["A single, fast pulse-check", "One-click polls tell you the room's temperature without needing anyone to compose an answer."],
@@ -283,9 +283,9 @@ export default function FacilitatorGuidePage() {
                     ))}
                   </ol>
                   <Callout type="example" title="This shows up on every module page">
-                    Every module now displays a theory/hands-on time bar, plus a &ldquo;Paste into Claude, live&rdquo;
-                    box with a Copy button holding the exact prompt — pulled straight into the run-of-show
-                    tables below.
+                    Every module now displays a theory/hands-on time bar, plus a numbered sequence of 3–4
+                    demo cards, each with its own &ldquo;Paste into Claude, live&rdquo; box and Copy button —
+                    pulled straight into the run-of-show tables below.
                   </Callout>
                 </div>
               </FadeIn>
@@ -297,7 +297,7 @@ export default function FacilitatorGuidePage() {
                   <P>
                     Times assume a 9:00 AM start — shift the whole column if your session starts later. Each
                     module splits into its Framing block (theory, you talk) and Live Demo block (hands-on,
-                    you run the prompt).
+                    you run 3–4 prompts back to back).
                   </P>
                   <RunOfShowTable rows={day1Rows} />
                 </div>
