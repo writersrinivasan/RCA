@@ -17,6 +17,7 @@ import {
   CalendarClock,
   NotebookPen,
   Presentation,
+  Puzzle,
 } from "lucide-react";
 import { Container } from "@/components/Container";
 import { AuroraBackground } from "@/components/AuroraBackground";
@@ -86,6 +87,13 @@ const resourceCards = [
     title: "Facilitator Guide",
     tone: "slate" as const,
     body: "Room setup, a minute-by-minute run of show for all three days, and exactly how to run every interactive moment — the mechanics behind showing this off live.",
+  },
+  {
+    href: "/workshop",
+    icon: Puzzle,
+    title: "Workshop Add-Ons",
+    tone: "emerald" as const,
+    body: "Two extra modules built from live participant feedback: turning a prompt into a persistent agent, and the full code-to-deploy-to-RCA pipeline.",
   },
   {
     href: "/prompt-library",

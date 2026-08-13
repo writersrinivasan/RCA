@@ -14,6 +14,7 @@ import {
   Route,
   NotebookPen,
   Presentation,
+  Puzzle,
   ChevronDown,
 } from "lucide-react";
 import { Container } from "./Container";
@@ -26,6 +27,7 @@ const dayLinks = [
 
 const resourceLinks = [
   { href: "/notes", label: "Learn the Concepts", icon: NotebookPen },
+  { href: "/workshop", label: "Workshop Add-Ons", icon: Puzzle },
   { href: "/prompt-library", label: "Prompt Library", icon: Library },
   { href: "/case-studies", label: "Case Studies", icon: BookOpenCheck },
   { href: "/frameworks", label: "Frameworks", icon: Route },

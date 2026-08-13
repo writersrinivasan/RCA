@@ -20,6 +20,7 @@ export function Footer() {
           <Link href="/day/2" className="hover:text-slate-300">Day 2</Link>
           <Link href="/day/3" className="hover:text-slate-300">Day 3</Link>
           <Link href="/notes" className="hover:text-slate-300">Learn the Concepts</Link>
+          <Link href="/workshop" className="hover:text-slate-300">Workshop Add-Ons</Link>
           <Link href="/prompt-library" className="hover:text-slate-300">Prompt Library</Link>
           <Link href="/case-studies" className="hover:text-slate-300">Case Studies</Link>
           <Link href="/glossary" className="hover:text-slate-300">Glossary</Link>

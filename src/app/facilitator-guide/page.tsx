@@ -8,6 +8,7 @@ import {
   Globe,
   Gauge,
   MonitorPlay,
+  Puzzle,
 } from "lucide-react";
 import { Container } from "@/components/Container";
 import { AuroraBackground } from "@/components/AuroraBackground";
@@ -91,6 +92,20 @@ export default function FacilitatorGuidePage() {
               training that&rsquo;s roughly 70% hands-on and 30% theory, without needing breakout rooms or
               open crowd Q&amp;A to make it feel hands-on.
             </p>
+          </FadeIn>
+          <FadeIn delay={0.08}>
+            <div className="mt-6 flex max-w-2xl items-start gap-2.5 rounded-xl border border-emerald-400/20 bg-emerald-400/[0.05] p-4">
+              <Puzzle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+              <p className="text-sm leading-relaxed text-emerald-100/80">
+                <span className="font-semibold text-emerald-300">Running Session 2 or 3? </span>
+                Two extra modules built from real Day 1 feedback — agent creation and the full
+                code-to-deploy-to-RCA pipeline — live at{" "}
+                <Link href="/workshop" className="underline underline-offset-2 hover:text-emerald-200">
+                  Workshop Add-Ons
+                </Link>
+                , including guidance on where to slot them in without blowing your time budget.
+              </p>
+            </div>
           </FadeIn>
         </Container>
       </section>
