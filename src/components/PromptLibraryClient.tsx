@@ -13,6 +13,10 @@ import {
   CalendarDays,
   Route,
   ShieldAlert,
+  Gauge,
+  UserCheck,
+  Workflow,
+  BadgeCheck,
 } from "lucide-react";
 import clsx from "clsx";
 import { promptCategories } from "@/lib/content/prompts";
@@ -30,6 +34,10 @@ const iconMap = {
   Search,
   Route,
   ShieldAlert,
+  Gauge,
+  UserCheck,
+  Workflow,
+  BadgeCheck,
 };
 
 const dayTone = { 1: "sky", 2: "amber", 3: "emerald" } as const;
